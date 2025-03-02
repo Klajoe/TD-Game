@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dağ ve Musluk Tower Defense</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Welcome ekranı -->
+  <div id="welcomeScreen">
+    <h1>Yeni Oyun</h1>
+    <input type="text" id="userNameInput" placeholder="Kullanıcı Adı" />
+    <div id="errorMessage" class="error-message"></div> <!-- Yeni: Hata mesajı için div -->
+    <button id="startGame">Oyuna Başla</button>
+    <button id="showScoreboard">Skor Tablosu</button> <!-- Yeni: Skor tablosu butonu -->
+  </div>
+  
+  <!-- Skor Tablosu Modal -->
+  <div id="scoreboardModal" class="modal">
+    <div class="modal-content">
+      <span id="closeModal" class="close">&times;</span>
+      <h2>En İyi Skorlar</h2>
+      <table id="topScoresTable">
+        <thead>
+          <tr>
+            <th>Sıra</th>
+            <th>Kullanıcı Adı</th>
+            <th>Seviye</th>
+            <th>XP</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Sol üstte upgrade butonları -->
+  <div id="buttons">
+    <button id="fasterShot">Daha Hızlı Su</button>
+    <span class="price">$<span id="costFaster">2</span></span><br>
+    
+    <button id="strongerShot">Daha Güçlü Su</button>
+    <span class="price">$<span id="costStronger">2</span></span>
+    <button id="strongerShot10x" class="tenx">10x (x1)</button><br>
+    
+    <button id="slowDown">Yavaşlat</button>
+    <span class="price">$<span id="costSlow">2</span></span>
+    <button id="slowDown10x" class="tenx">10x (x1)</button>
+  </div>
+  
+  <!-- Görevler paneli -->
+  <div id="missions"></div>
+  
+  <!-- Özel yetenek butonu -->
+  <button id="specialAbility">Special</button>
+  
+  <!-- Sağ üstte bilgi panelleri -->
+  <div id="balance">Balance: $50.00</div>
+  <div id="health">Health: 3</div>
+  <div id="levelInfo">Level: 1 | XP: 0/100</div>
+  <div id="overallBest">Best: -</div>
+  <div id="income">Income: $1.00/s</div>
+  
+  <!-- Sağ tarafta Can Al ve Yatırım butonları -->
+  <button id="buyHealth">Can Al ($<span id="costHealth">20</span>)</button>
+  <button id="invest">Yatırım ($50)</button>
+  <button id="newGame">New Game</button>
+  
+  <!-- Skor Tablosu (opsiyonel) -->
+  <div id="scoreboard"></div>
+  
+  <canvas id="gameCanvas"></canvas>
+  
+  <script src="script.js"></script>
+</body>
+</html>

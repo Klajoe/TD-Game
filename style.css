@@ -1,0 +1,229 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background: #333;
+}
+canvas {
+  display: block;
+}
+
+/* Welcome ekranı */
+#welcomeScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+#welcomeScreen h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+#welcomeScreen input {
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 20px;
+  width: 300px;
+  max-width: 80%;
+}
+#welcomeScreen button {
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 10px; /* Yeni: Butonlar arasında boşluk */
+}
+
+/* Yeni: Hata mesajı stili */
+.error-message {
+  color: #ff4444;
+  font-size: 16px;
+  margin-bottom: 20px;
+  text-align: center;
+  display: none; /* Varsayılan olarak gizli */
+}
+
+/* Yeni: Modal (Skor Tablosu) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 3000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+}
+.modal-content {
+  background: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 500px;
+  color: #333;
+}
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.close:hover {
+  color: #000;
+}
+.modal-content h2 {
+  margin-top: 0;
+}
+#topScoresTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+#topScoresTable th, #topScoresTable td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+#topScoresTable th {
+  background: #444;
+  color: white;
+}
+
+/* Sol üstte upgrade butonları */
+#buttons {
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  z-index: 1000;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+#buttons button {
+  margin: 5px;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.price {
+  margin-left: 5px;
+  font-size: 12px;
+  display: inline-block;
+  width: 30px;
+}
+
+/* 10x butonları */
+.tenx {
+  margin-left: 5px;
+  padding: 5px 8px;
+  font-size: 12px;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* Görevler paneli */
+#missions {
+  position: fixed;
+  left: 10px;
+  top: 170px;
+  z-index: 1000;
+  font-family: Arial, sans-serif;
+  color: white;
+  background: rgba(0,0,0,0.5);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+/* Özel yetenek butonu */
+#specialAbility {
+  position: fixed;
+  left: 10px;
+  top: 300px;
+  z-index: 1000;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #ffcc00;
+  border: none;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+}
+
+/* Sağ üstte bilgi panelleri */
+#balance, #health, #levelInfo, #income, #overallBest {
+  position: fixed;
+  right: 10px;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+}
+#balance { top: 10px; }
+#health { top: 50px; }
+#levelInfo { top: 90px; }
+#overallBest { top: 130px; }
+#income { top: 170px; }
+
+/* Sağ tarafta Can Al ve Yatırım butonları */
+#buyHealth, #invest {
+  position: fixed;
+  right: 10px;
+  padding: 5px 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+}
+#buyHealth { top: 210px; background: #28a745; }
+#invest { top: 250px; background: #ff6600; }
+
+/* New Game Butonu */
+#newGame {
+  position: fixed;
+  left: 50%;
+  top: 70%;
+  transform: translate(-50%, -50%);
+  padding: 10px 20px;
+  font-size: 20px;
+  z-index: 2000;
+  display: none;
+  cursor: pointer;
+}
+
+/* Skor Tablosu (opsiyonel) */
+#scoreboard {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  padding: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+/* Mobil cihazlar için düzenlemeler */
+@media (max-width: 768px) {
+  canvas { width: 100%; height: auto; }
+  #buttons button, #welcomeScreen button, #buyHealth, #invest, #newGame {
+    font-size: 16px; padding: 8px 12px;
+  }
+  #scoreboard { font-size: 14px; padding: 8px; max-height: 300px; }
+  #welcomeScreen h1 { font-size: 24px; }
+  #welcomeScreen input { width: 80%; font-size: 16px; }
+}
